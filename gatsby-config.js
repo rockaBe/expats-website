@@ -25,9 +25,9 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Expats in Germany`,
+    description: `You are living in Germany and want to get support on urgent topics related to your current issues - then we can help you.`,
+    author: `@mw-expats.com`,
   },
   plugins: [
     'gatsby-transformer-remark',
