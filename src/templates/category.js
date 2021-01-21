@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
+import Service from '../components/service'
 
 class CategoryTemplate extends React.Component {
   render() {
@@ -28,6 +29,25 @@ class CategoryTemplate extends React.Component {
                 __html: category.description.childMarkdownRemark.html,
               }}
             />
+          </div>
+          <div className="servicePreviewList">
+            <ul>
+              {category.service &&
+                category.service.map(serv => (
+                  <li className="tag" key={serv.name}>
+                    <div>
+                      <h2>{serv.name}</h2>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: serv.description.childMarkdownRemark.excerpt,
+                        }}
+                      />
+                    </div>
+
+                  </li>
+                ))}
+
+            </ul>
           </div>
         </div>
       </Layout>
@@ -61,8 +81,11 @@ export const pageQuery = graphql`
         description {
           childMarkdownRemark {
             html
+            excerpt(pruneLength: 100)
           }
         }
+        duration
+        minPrice
       }
     }
   }

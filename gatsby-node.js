@@ -25,6 +25,8 @@ exports.createPages = ({ graphql, actions }) => {
                       html
                     }
                   }
+                  duration
+                  minPrice
                 }
                 icon {
                   file {
@@ -45,7 +47,7 @@ exports.createPages = ({ graphql, actions }) => {
         categories.forEach((category, index) => {
           console.dir(category)
           createPage({
-            path: `/category/${category.node.slug}/`,
+            path: `/${category.node.slug}/`,
             component: categoryTemplate,
             context: {
               slug: category.node.slug

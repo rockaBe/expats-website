@@ -10,7 +10,7 @@ export default ({ category }) => (
       <Img alt={`${category.name}-icon`} fixed={category.icon.fixed} />
     </div>
     <h3 className={styles.previewTitle}>
-      <Link to={`/category/${category.slug}`}>{category.name}</Link>
+      <Link to={`/${category.slug}`}>{category.name}</Link>
     </h3>
     <small></small>
     <div
