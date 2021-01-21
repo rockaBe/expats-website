@@ -2,13 +2,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import styles from './article-preview.module.css'
+import styles from './category.module.css'
 
 export default ({ category }) => (
   <div className={styles.preview}>
-    <Img alt="" fixed={category.icon.fixed} />
+    <div className={styles.icon}>
+      <Img alt={`${category.name}-icon`} fixed={category.icon.fixed} />
+    </div>
     <h3 className={styles.previewTitle}>
-      <Link to={`/blog/${category.slug}`}>{category.name}</Link>
+      <Link to={`/category/${category.slug}`}>{category.name}</Link>
     </h3>
     <small></small>
     <div
@@ -16,11 +18,5 @@ export default ({ category }) => (
         __html: category.description.childMarkdownRemark.html,
       }}
     />
-    {category.service &&
-      category.service.map(serv => (
-        <p className={styles.tag} key={serv.name}>
-          {serv.name}
-        </p>
-      ))}
   </div>
 )

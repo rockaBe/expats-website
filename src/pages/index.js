@@ -19,10 +19,10 @@ class RootIndex extends React.Component {
           {/* <Hero data={author.node} /> */}
           <div className="wrapper">
             <h2 className="section-headline">Categories</h2>
-            <ul className="categories-list">
+            <ul className="category-list">
               {categories.map(({ node }) => {
                 return (
-                  <li key={node.slug}>
+                  <li className="category-item" key={node.slug}>
                     <Category category={node} />
                   </li>
                 )
@@ -49,14 +49,6 @@ export const pageQuery = graphql`
             }
           }
           slug
-          service {
-            name
-            description {
-              childMarkdownRemark {
-                html
-              }
-            }
-          }
           icon {
             fixed(width: 120, height: 120) {
               ...GatsbyContentfulFixed_withWebp
