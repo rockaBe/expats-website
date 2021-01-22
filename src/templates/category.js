@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
@@ -36,7 +36,9 @@ class CategoryTemplate extends React.Component {
                 category.service.map(serv => (
                   <li className="tag" key={serv.name}>
                     <div>
-                      <h2>{serv.name}</h2>
+                      <h2>
+                        <Link to={`/${category.slug}/${serv.slug}`}>{serv.name}</Link>
+                      </h2>
                       <div
                         dangerouslySetInnerHTML={{
                           __html: serv.description.childMarkdownRemark.excerpt,
@@ -66,6 +68,7 @@ export const pageQuery = graphql`
     }
     contentfulCategory(slug: { eq: $slug }) {
       name
+      slug
       icon {
         fixed(width: 120, height: 120, background: "rgb:000000") {
           ...GatsbyContentfulFixed_withWebp
@@ -78,6 +81,7 @@ export const pageQuery = graphql`
       }
       service {
         name
+        slug
         description {
           childMarkdownRemark {
             html

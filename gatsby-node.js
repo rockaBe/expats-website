@@ -5,10 +5,11 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const categoryTemplate = path.resolve('./src/templates/category.js')
+    const serviceTemplate = path.resolve('./src/templates/service.js')
     resolve(
       graphql(
         `{
-          allContentfulCategory {
+          categories: allContentfulCategory {
             edges {
               node {
                 name
@@ -36,21 +37,58 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          services: allContentfulService {
+            edges {
+              node {
+                name
+                slug
+                description {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                category {
+                  name
+                  slug
+                }
+                duration
+                minPrice
+                service_provider {
+                  name
+                  biography {
+                    childMarkdownRemark {
+                      html
+                    }
+                  }
+                }
+              }
+            }
+          }
         }`
       ).then(result => {
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
-
-        const categories = result.data.allContentfulCategory.edges
-        categories.forEach((category, index) => {
+        console.log('result', result);
+        result.data.categories.edges.forEach((category, index) => {
           console.dir(category)
           createPage({
             path: `/${category.node.slug}/`,
             component: categoryTemplate,
             context: {
               slug: category.node.slug
+            },
+          })
+        });
+
+        result.data.services.edges.forEach((service, index) => {
+          console.dir(service)
+          createPage({
+            path:`/${service.node.category.slug}/${service.node.slug}`,
+            component: serviceTemplate,
+            context: {
+              slug: service.node.slug
             },
           })
         })

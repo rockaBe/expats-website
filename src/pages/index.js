@@ -8,17 +8,15 @@ import Category from '../components/category'
 class RootIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    // const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    // const [author] = get(this, 'props.data.allContentfulPerson.edges')
+    const siteDescription = get(this, 'props.data.site.siteMetadata.description')
     const categories = get(this, 'props.data.allContentfulCategory.edges')
 
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           <Helmet title={siteTitle} />
-          {/* <Hero data={author.node} /> */}
           <div className="wrapper">
-            <h2 className="section-headline">Categories</h2>
+            <h3 className="section-headline">{siteDescription}</h3>
             <ul className="category-list">
               {categories.map(({ node }) => {
                 return (
@@ -39,6 +37,12 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
     allContentfulCategory {
       edges {
         node {
@@ -46,6 +50,7 @@ export const pageQuery = graphql`
           description {
             childMarkdownRemark {
               html
+              excerpt(pruneLength: 85)
             }
           }
           slug
