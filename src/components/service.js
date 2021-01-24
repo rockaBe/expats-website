@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import styles from './service.module.css'
-
 export default ({ service }) => (
-  <div className={styles.preview}>
-    <h3 className={styles.previewTitle}>
+  <div className="preview">
+    <h3 className="previewTitle">
       <Link to={`/${service.slug}`}>{service.name}</Link>
     </h3>
     <small></small>

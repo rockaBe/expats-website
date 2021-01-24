@@ -2,12 +2,10 @@ import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import styles from './category.module.css'
-
 export default ({ category }) => (
-  <div className={styles.preview}>
+  <div className="preview">
     <Img alt={`${category.name}-icon`} fixed={category.icon.fixed} />
-    <h3 className={styles.previewTitle}>
+    <h3 className="previewTitle">
       <Link to={`/${category.slug}`}>{category.name}</Link>
     </h3>
     <small></small>
