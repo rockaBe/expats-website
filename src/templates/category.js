@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
-import Service from '../components/service'
 
 class CategoryTemplate extends React.Component {
   render() {
@@ -13,7 +12,7 @@ class CategoryTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <div>
           <Helmet title={`${category.name} | ${siteTitle}`} />
           <div className="wrapper">
             <div className="hero">
@@ -31,10 +30,10 @@ class CategoryTemplate extends React.Component {
             />
           </div>
           <div className="servicePreviewList">
-            <ul>
+            <div className="grid grid-cols-3 gap-4">
               {category.service &&
                 category.service.map(serv => (
-                  <li className="tag" key={serv.name}>
+                  <div className="tag" key={serv.name}>
                     <div>
                       <h2>
                         <Link to={`/${category.slug}/${serv.slug}`}>{serv.name}</Link>
@@ -46,10 +45,10 @@ class CategoryTemplate extends React.Component {
                       />
                     </div>
 
-                  </li>
+                  </div>
                 ))}
 
-            </ul>
+            </div>
           </div>
         </div>
       </Layout>

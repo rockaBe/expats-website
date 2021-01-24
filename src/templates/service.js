@@ -12,7 +12,7 @@ class ServiceTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <div>
           <Helmet title={`${service.name} | ${siteTitle}`} />
           <div className="wrapper">
             <h1 className="section-headline">{service.name}</h1>

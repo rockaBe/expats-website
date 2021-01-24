@@ -26,7 +26,11 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: `Expats in Germany`,
-    description: `You are living in Germany and want to get support on urgent topics related to your current issues - then we can help you.`,
+    motivation: {
+      title: `Our endeavor`,
+      description: `at Project Expoat is to offer a one stop shop for you needs- with English speaking service providers in Germany. Simply tell us where you are located in Germany and what can we help you with, what are you looking for? Our team has personally met and whetted these service partners to ensure best quality of service and provide effective solutions`,
+    },
+    description: `Our emdeavor at Project Expoat is to offer a one stop shop for you needs- with English speaking service providers in Germany. Simply tell us where you are located in Germany and what can we help you with, what are you looking for? Our team has personally met and whetted these service partners to ensure best quality of service and provide effective solutions`,
     author: `@mw-expats.com`,
   },
   plugins: [
