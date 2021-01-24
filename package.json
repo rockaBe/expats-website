@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "expats-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A static website built for  Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "naehler.bernd@gmail.com>",
   "dependencies": {
     "autoprefixer": "^10.2.3",
     "gatsby": "^2.26.1",
@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/rockaBe/expats-website"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
